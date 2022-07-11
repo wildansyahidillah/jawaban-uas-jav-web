@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Category</title>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<a href="/categories/add">New</a>
+<table border="1" width="100%">
+    <tr>
+        <th width="20%">ID</th>
+        <th>Category Name</th>
+        <th width="10%">&nbsp;</th>
+    </tr>
+
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td>
+            <a th:href="@{/categories/edit/{id}(id=${category.id})}">Edit</a> &bull;
+            <a th:href="@{/categories/delete/{id}(id=${category.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a href="/books">Books</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Category</title>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<a href="/categories">Cancel</a>
+<form action="#" th:action="@{/categories/save}" th:object="${category}" method="post">
+    <input id="id" th:field="*{id}" type="hidden">
+    <label for="name">Name</label>
+    <input id="name" th:field="*{name}" type="text">
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

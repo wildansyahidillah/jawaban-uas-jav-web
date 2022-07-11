@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<a href="/books">Cancel</a>
+<form action="#" th:action="@{/books/save}" th:object="${book}" method="post">
+    <input id="id" th:field="*{id}" type="hidden">
+    <label for="title">Title</label>
+    <input id="title" th:field="*{title}" type="text"><br>
+    <label for="author">Author</label>
+    <input id="author" th:field="*{author}" type="text"><br>
+    <label for="category">Author</label>
+    <select th:if="(*{id} != null)" name="category" id="category">
+        <option th:each="option : ${categories}" th:value="${option.id}" th:text="${option.name}" th:selected="(${option.id} == *{category.id})"></option>
+    </select>
+    <select th:unless="(*{id} != null)" name="category" id="category">
+        <option th:each="option : ${categories}" th:value="${option.id}" th:text="${option.name}"></option>
+    </select>
+    <br>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
